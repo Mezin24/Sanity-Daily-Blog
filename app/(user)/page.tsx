@@ -1,5 +1,22 @@
-import Image from 'next/image';
+import { postsQuery } from '@/lib/queries';
+import { sanityFetch, token } from '@/lib/sanity.fetch';
+import { SanityDocument } from 'next-sanity';
+import { draftMode } from 'next/headers';
+import Posts from '../components/Posts';
+import PreviewPosts from '../components/PreviewPosts';
+import PreviewProvider from '../components/PreviewProvider';
 
-export default function Home() {
-  return <h1 className='text-center mt-5 font-bold'>Sanity</h1>;
+export default async function Home() {
+  const posts = await sanityFetch<SanityDocument[]>({ query: postsQuery });
+  const isDraftMode = draftMode().isEnabled;
+
+  if (isDraftMode && token) {
+    return (
+      <PreviewProvider token={token}>
+        <PreviewPosts posts={posts} />
+      </PreviewProvider>
+    );
+  }
+
+  return <Posts posts={posts} />;
 }
