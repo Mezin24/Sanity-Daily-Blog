@@ -9,6 +9,7 @@ With custom sanity admin studio
 - Sanity (CMS)
 - [Sanity Custom Admin Studio](https://sanity-daily-blog-rmuj.vercel.app/studio)
 - Preview before publishing
+- GROQ query language
 - Portable Text Block
 
 ```
