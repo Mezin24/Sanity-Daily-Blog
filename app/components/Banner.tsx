@@ -7,7 +7,7 @@ const Banner = () => {
           Welcome to{' '}
           <span className='underline decoration-4 decoration-[#f7ab0a]'>
             Every Developers
-          </span>
+          </span>{' '}
           favorite blog in the Devosphere
         </h2>
       </div>
